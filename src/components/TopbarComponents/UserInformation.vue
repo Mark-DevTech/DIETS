@@ -4,12 +4,13 @@
   import { useAuth } from '~/composables/authentication/useAuth';
 
   const userInfo = useCookie('authUser');
+  const router = useRouter();
 
   const clickedLogout = async () => {
     const result = await useAuth().logout();
     
     if(result.status === 'success') {
-      console.log('Logout success');
+      router.push('/auth/login');
     }
 
   }
