@@ -40,7 +40,8 @@ const handleSuccessfulLogin = async ()  => {
     const response = await useAuth().fetchUser();
 
     if (response.status === 'success') {
-        router.push('/dietary/dashboard');
+        console.log('Logging in...');
+        router.push('/dietary');
     } else { 
         handleErrorLogin(response);
     }
@@ -51,7 +52,7 @@ const handleSuccessfulLogin = async ()  => {
 const handleErrorLogin = async (result: any) => { 
     console.log(result);
     errorObject.value = result;
-    toast.add({ severity: 'error', summary: errorObject.value.title, detail: errorObject.value.error, life: 5000 });
+    toast.add({ severity: 'error', summary: errorObject.value.title, detail: `Try logging in again.\nMake sure to enter the correct username and password.`, life: 5000 });
 }
 
 

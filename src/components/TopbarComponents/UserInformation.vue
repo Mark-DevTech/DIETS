@@ -3,7 +3,7 @@
   import { ref } from 'vue';
   import { useAuth } from '~/composables/authentication/useAuth';
 
-  const userInfo = useCookie('authUser');
+const userInfo = useCookie('authUser') as unknown as { firstname: string; lastname: string; postitle: string };
   const router = useRouter();
 
   const clickedLogout = async () => {

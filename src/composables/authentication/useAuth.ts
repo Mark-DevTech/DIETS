@@ -1,6 +1,6 @@
 interface LoginResponse {
-  user: any,
-  token: any
+  user: any;
+  token: any;
 }
 
 export const useAuth = () => {
@@ -12,7 +12,7 @@ export const useAuth = () => {
   const login = async (credentials: { username: string; password: string }) => {
 
     try {
-      const result: LoginResponse = await $fetch('/api/auth/login', {
+      const result: LoginResponse = await $fetch('/api/auth/login' as string, {
         method: 'POST',
         body: credentials
       });
@@ -88,7 +88,8 @@ export const useAuth = () => {
         status: 'success',
         title: 'User fetched successfully',
         description: 'You have successfully fetched user',
-        error: null
+        error: null,
+        data: result
       };
 
 
@@ -97,7 +98,8 @@ export const useAuth = () => {
         status: 'error',
         title: 'User fetch failed',
         description: 'Something went wrong during user fetch',
-        error
+        error,
+        data: null
       };
 
     }
